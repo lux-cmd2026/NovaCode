@@ -1,0 +1,46 @@
+appId: dev.novacode.app
+productName: NovaCode
+copyright: NovaCode
+directories:
+  output: release
+  buildResources: build
+files:
+  - out/**
+  - build/icon.png
+  - package.json
+asar: true
+artifactName: NovaCode-${version}-${os}-${arch}.${ext}
+win:
+  icon: build/icon.ico
+  target:
+    - target: nsis
+      arch: [x64, arm64]
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  perMachine: false
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: NovaCode
+  installerIcon: build/icon.ico
+  uninstallerIcon: build/icon.ico
+mac:
+  icon: build/icon.icns
+  category: public.app-category.developer-tools
+  target:
+    - target: dmg
+      arch: [x64, arm64]
+  hardenedRuntime: false
+  gatekeeperAssess: false
+dmg:
+  title: NovaCode ${version}
+linux:
+  icon: build/icon.png
+  category: Development
+  maintainer: NovaCode <support@novacode.local>
+  synopsis: AI coding workspace
+  target:
+    - target: AppImage
+      arch: [x64]
+    - target: deb
+      arch: [x64]
